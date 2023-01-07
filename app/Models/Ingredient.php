@@ -15,6 +15,11 @@ class Ingredient extends Model
 
     protected $table = 'ingredients';
     protected $fillable = ['title'];
- 
+
     public $translatedAttributes = ['title'];
+
+    public function meals()
+    {
+        return $this->belongsToMany(Meal::class, 'meal_ingredient');
+    }
 }

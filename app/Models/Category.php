@@ -15,6 +15,11 @@ class Category extends Model
 
     protected $table = 'categories';
     protected $fillable = ['title'];
- 
+
     public $translatedAttributes = ['title'];
+
+    public function meals()
+    {
+        return $this->hasMany(Meal::class);
+    }
 }

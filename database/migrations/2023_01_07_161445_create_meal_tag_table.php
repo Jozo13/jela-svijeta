@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('meals', function (Blueprint $table) {
+        Schema::create('meal_tag', function (Blueprint $table) {
             $table->id();
-            $table->string("title")->nullable();
-            $table->string("description")->nullable();
-            $table->string("status")->nullable();
-            $table->bigInteger('category_id')->nullable();
+            $table->bigInteger('tag_id');
+            $table->bigInteger('meal_id');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jela');
+        Schema::dropIfExists('meal_tag');
     }
 };

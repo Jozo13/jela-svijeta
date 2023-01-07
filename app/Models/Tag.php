@@ -15,6 +15,11 @@ class Tag extends Model
 
     protected $table = 'tags';
     protected $fillable = ['title'];
- 
+
     public $translatedAttributes = ['title'];
+
+    public function meals()
+    {
+        return $this->belongsToMany(Meal::class, 'meal_tag');
+    }
 }
