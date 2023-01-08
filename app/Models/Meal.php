@@ -18,6 +18,15 @@ class Meal extends Model
 
     public $translatedAttributes = ['title', 'description'];
 
+    const PERPAGE = 2;
+    const PAGE = 1;
+    const INGREDIENTS = 'ingredients';
+    const CATEGORY = 'category';
+    const TAGS = 'tags';
+    const CREATED = 'created';
+    const MODIFIED = 'modified';
+    const DELETED = 'deleted';
+
     public function category()
     {
         return $this->belongsTo(Category::class);
