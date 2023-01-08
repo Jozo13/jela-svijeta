@@ -22,15 +22,18 @@ class Meals
 
     public static function getMeals($request)
     {
+        //set language
         $lang = Meals::checkLanguage($request->lang ?? '');
         App::setLocale($lang);
 
         $meals = new Meal();
 
+        // filter by category
         if ($request->category) {
             $meals = $meals->where('category_id', $request->category);
         }
 
+        // filter by tags
         if ($request->tags) {
             $tags = explode(',', $request->tags);
 
@@ -39,10 +42,12 @@ class Meals
             });
         }
 
+        // filter by diff_time
         if ($request->diff_time) {
             $meals = $meals->whereDate('created_at', '>', Carbon::createFromTimestamp($request->diff_time))->withTrashed();
         }
 
+        // add related data
         if ($request->with) {
             $with = explode(',', $request->with);
             foreach ($with as $keyword) {
@@ -58,6 +63,7 @@ class Meals
             }
         }
 
+        // paginate results
         return $meals->paginate($request->get('per_page', Meal::PERPAGE), ['*'], 'page', $request->get('page', Meal::PAGE));
     }
 }
