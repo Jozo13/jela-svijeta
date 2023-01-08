@@ -1,4 +1,4 @@
-# Jeva svijeta
+# Jela svijeta
 
 One endpoint for pages of meals.
 
