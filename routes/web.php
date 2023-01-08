@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\MealController;
+use App\Models\Meal;
+use Astrotomic\Translatable\Locales;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/meal', [MealController::class, 'show']);
 
 Route::get('/', function () {
     return view('welcome');
